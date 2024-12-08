@@ -1,9 +1,14 @@
+import { useLocation } from "react-router-dom"
+
 export default function Header() {
+    const location = useLocation() // Sirve para saber en que url estas. Se obtiene un objeto
+    console.log(location)
+
   return (
     <div>
         <header>
             <div className="title">
-                <h1 className="red-text logo-title">TRAILERFLIX </h1>
+             {location.pathname === '/' ? <h1 className="red-text logo-title">TRAILERFLIX </h1> : <h1 >Detalles de la Película </h1> }   
             </div>
             <div className="login-container">
                 <form id="loginForm" style={{display: 'block'}}>

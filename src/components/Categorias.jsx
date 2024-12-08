@@ -12,18 +12,13 @@ export default function Categorias() {
         if (!acc.includes(pelicula.gen)){
             acc.push(pelicula.gen)
         }
-        
-        return acc;
 
+        return acc;
     },[]).sort()
 
-    
-    
-   
-     
-
   return (
-    <div>
+    
+    <>
         {/*Se utiliza un map para crear cada ArticuloCard con su genero y correspondiente */}
         {
             categorias.map( (cat, index) => (
@@ -35,6 +30,6 @@ export default function Categorias() {
           )
         }
       
-    </div>
+    </>
   )
 }
