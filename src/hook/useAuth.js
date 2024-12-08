@@ -22,7 +22,7 @@ const [userCheck, setUserCheck] =useState('')
 //Almacena el usuario en el localStorage
 const setUserInStorage = ( user ) =>  localStorage.setItem( "user" , JSON.stringify(user))
 
-console.log(user?.firstName)
+
   return ( { user, setUser, userCheck, setUserCheck, setUserInStorage}
     
   )

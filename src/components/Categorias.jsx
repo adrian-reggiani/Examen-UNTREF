@@ -17,12 +17,10 @@ export default function Categorias() {
     },[]).sort()
 
   return (
-    
     <>
         {/*Se utiliza un map para crear cada ArticuloCard con su genero y correspondiente */}
         {
-            categorias.map( (cat, index) => (
-                
+          categorias.map( (cat, index) => (
                 <ArticuloCard key={index}  
                     genero = {cat}
                 />

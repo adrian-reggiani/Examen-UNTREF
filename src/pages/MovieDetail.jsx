@@ -5,9 +5,11 @@ import Header from "../components/Header"
 
 export default function MovieDetail() {
   const { id } = useParams()
-  const peliculas = useCargarPeliculas() // Hook que carga las peliculas del JSON
+  // Hook que carga las peliculas del JSON
+  const peliculas = useCargarPeliculas() 
   const [pelicula, setPelicula] = useState(null)
 
+  // Pelicula encontra segun ID
   useEffect(() => {
       const peliculaEncontrada = peliculas.find( ( peli ) => ( peli.id === parseInt(id)))
       setPelicula(peliculaEncontrada)

@@ -3,9 +3,14 @@ import useCargarPeliculas from "../hook/useCargarPeliculas";
 
 export default function ArticuloCard({ genero }) {
   const navegar = useNavigate()
-  const peliculas = useCargarPeliculas() // Hook que carga las peliculas del JSON
-  const peliculasGen = peliculas.filter( (peli) => peli.gen === genero ) // Filtra por genero
 
+  // Hook que carga las peliculas del JSON
+  const peliculas = useCargarPeliculas() 
+
+  // Filtra por genero
+  const peliculasGen = peliculas.filter( (peli) => peli.gen === genero ) 
+
+  //Redirige segun id
   const handleNavegacion = ((id) => (
     navegar(`/movie/${id}`)
   ))
@@ -19,12 +24,11 @@ export default function ArticuloCard({ genero }) {
 
             <article className="container loading">
               <article className="genero"> 
-                <h2>{peliculasGen[0]?.gen}</h2> {/*El ? es porque el primer render inica el arreglo vacio y tira error. Sirve para esperar a que se cargue. */} 
+                <h2>{peliculasGen[0]?.gen}</h2> 
               </article>
               
               {peliculasGen.map( (pelicula) => (
-                <div className="card" key={pelicula.id} onClick={ () => handleNavegacion(pelicula.id)}> {/* Pasa el id al Handle para que se pueda navegar */ }
-                  
+                <div className="card" key={pelicula.id} onClick={ () => handleNavegacion(pelicula.id)}> 
                     <div className="card-picture">
                       <img src={pelicula.poster} alt="" />
                     </div>
@@ -33,16 +37,12 @@ export default function ArticuloCard({ genero }) {
                       <p className="card-bottom-title">{pelicula.titulo}</p>
                       <p className="card-bottom-paragraph">Pelicula</p>
                     </div>
-
                 </div>
                 
               ) ) }
               </article>
-
-
-
             : <p>No hay peliculas de Acción</p>
-          }
+        }
         
     </section>
   )
