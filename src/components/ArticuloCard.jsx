@@ -31,8 +31,9 @@ export default function ArticuloCard({ genero }) {
     
                     <div className="card-bottom"> 
                       <p className="card-bottom-title">{pelicula.titulo}</p>
-    
+                      <p className="card-bottom-paragraph">Pelicula</p>
                     </div>
+
                 </div>
                 
               ) ) }

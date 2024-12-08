@@ -42,6 +42,15 @@ main {
     line-height: 1.05;
 }
 
+.card-bottom-paragraph {
+    color: #9b4dca;
+    cursor: pointer;
+}
+
+.card-bottom-paragraph:hover{
+    color: #73828e;
+}
+
 .card-picture img {
     width: 280px;
     transition: transform .5s;

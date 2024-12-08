@@ -20,12 +20,11 @@ export default function MovieDetail() {
       <Header />
       
       <div className="container"> 
-        
+    
           <div className="movie-poster">
             <img src={ `/public/posters/${id}.jpg`} alt="{pelicula.titulo}" />
           </div>
 
-          
           <div className="movie-info">
             <h2>{pelicula?.titulo}</h2>
             <p><strong>Resumen:</strong> {pelicula?.resumen}</p>
