@@ -5,24 +5,25 @@ import { useState } from "react";
 
 
 export default function Header() {
-    const { login, logout } = useContext(AuthContext) // Se extrae del AuthContext
-    const [userCheck, setUserCheck] =useState('')
+    const {user, userCheck, setUserCheck, login, logout } = useContext(AuthContext) // Se extrae del AuthContext
     
+    //Se Almacena los valores de los input para despues borrar
     const [userLogin, setUserLogin] = useState('')
     const [pwdLogin, setPwdLogin] = useState('')
     
     const location = useLocation() // Sirve para saber en que url estas. Se obtiene un objeto
-    
+
+    //Pasa los valores al context y el return de login lo guarda en el estado
     const handleValidacion = (e) =>{ 
         e.preventDefault() // Detiene la recarga de la pagina al enviar un formulario
-        setUserCheck(login(userLogin, pwdLogin)) //Pasa los valores al context y el return de login lo guarda en el estado
+        setUserCheck(login(userLogin, pwdLogin)) 
        
     }
 
+    // Sirve para limpiar al cerrar sesion
     const handleLogout = () => {
         setUserCheck(logout()) 
-        setUserLogin('')
-        setPwdLogin('')
+    
     }
 
   return (
@@ -31,6 +32,8 @@ export default function Header() {
             <div className="title">
              {location.pathname === '/' ? <h1 className="red-text logo-title">TRAILERFLIX </h1> : <h1 >Detalles de la Película </h1> }   
             </div>
+
+            {/*Formulario de ingreso de sesion */}
             <div className="login-container">
                 <form id="loginForm" style={{display: userCheck ? 'none' : 'block'}} onSubmit={handleValidacion}> {/* Si hay algo en el userCheck cambia el css */}
                     <input type="text" id="username" placeholder="Usuario" onChange = { (e) => setUserLogin(e.target.value)} required /> 
@@ -38,16 +41,17 @@ export default function Header() {
                     <button type="submit">Ingresar</button>
                 </form>
 
+                <div>
                 {userCheck ? 
-
                 <div id="userInfo" style={{display: userCheck ? 'flex' : 'none'}}> {/* Si hay algo en el userCheck cambia el css */}
-                    <span id="userNameDisplay">Bienvenido, {userLogin}</span>
+                    <span id="userNameDisplay">Bienvenido, {user?.firstName}</span>
                     <button id="logoutBtn" onClick={handleLogout}>Cerrar Sessión</button>
                 </div>
 
-                :
-                    ''
-                }
+                : ''
+            }
+    </div>
+  )
                 
             </div>
         </header>
